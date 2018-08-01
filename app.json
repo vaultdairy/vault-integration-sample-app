@@ -1,0 +1,25 @@
+{
+  "name": "Vault Integration Example",
+  "description": "A barebones Node.js app that shows how to create a basic Vault Integration",
+  "repository": "https://github.com/vaultdairy/vault-integration-sample-app",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "static"],
+  "env": {
+    "PRIVATE_KEY": {
+      "description": "The private key used to sign JWTs",
+      "value": "-----BEGIN RSA PRIVATE KEY-----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-----END RSA PRIVATE KEY-----"
+    },
+    "INTEGRATION_KEY_ID": {
+      "description": "The ID of the key provided in the PRIVATE KEY field.",
+      "value": "5"
+    },
+    "INTEGRATION_ID": {
+        "description": "The integration ID of this integration",
+        "value": "UPDATE_ME"
+    },
+    "VAULT_HOST": {
+        "description": "The Vault API endpoint to use.",
+        "value": "https://api.vaultdairy.com"
+    }
+  }
+}
