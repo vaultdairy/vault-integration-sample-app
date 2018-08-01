@@ -2,7 +2,7 @@
   "name": "Vault Integration Example",
   "description": "A barebones Node.js app that shows how to create a basic Vault Integration",
   "repository": "https://github.com/vaultdairy/vault-integration-sample-app",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "logo": "https://app.vaultdairy.com/assets/vault_full_color.png",
   "keywords": ["node", "express", "static"],
   "env": {
     "PRIVATE_KEY": {
