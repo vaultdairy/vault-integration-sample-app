@@ -1,7 +1,7 @@
 # vault-integration-sample-app
 A sample Node.js app that shows how to create a new Vault integration
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vaultdairy/vault-integration-sample-app)
 
 ## Deploy Instructions
 1. Click on the Deploy button above. You should be able to deploy the application to a personal Heroku account for free.
