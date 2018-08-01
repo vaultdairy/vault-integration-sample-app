@@ -4,7 +4,7 @@ A sample Node.js app that shows how to create a new Vault integration
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vaultdairy/vault-integration-sample-app)
 
 ## Deploy Instructions
-1. Click on the Deploy button above. You should be able to deploy the application to a personal Heroku account for free.
+1. Click on the Deploy button above. You should be able to deploy the application to a personal Heroku account for free.  Go ahead and deploy the app, even though we'll need to update the environment variables.  Make note of the app's URL.
 1. Navigate to https://admin.vaultdairy.com and create a new user, if you don't already have one.  If you already have one, login.
 1. Create a new organization if you don't already have one, or if you want to keep this integration separate from your other organizations.
 1. Click on "Integrations" and click "Create new Integration"
