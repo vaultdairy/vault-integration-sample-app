@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/vaultdairy/vault-integration-sample-app#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "request": "^2.87.0",

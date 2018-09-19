@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const rp = require('request-promise');
 const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true, type: 'application/x-www-form-urlencoded' }));
+app.use(bodyParser.json({ type: 'application/*' }));
 
 const HOST = process.env.HOST || 'http://localhost';
 const PORT = process.env.PORT || 5000;
@@ -18,21 +21,11 @@ app.get('/callback', async (req, res) => {
     // 
     var installation = jwt.decode(req.query.installation);
 
-    let integration_id = installation.payload.audience;
-    let installation_id = installation.payload.sub;
-    let organization_id = installation.payload.organization_id;
-    let user_id = installation.payload.user_id;
-
-
-    let status;
-
-    if(organization_id){
-        status = `Organization ${organization_id} subscribed via Installation ID ${installation_id}.`;
-    } else {
-        status = `User ${user_id} subscribed via Installation ID ${installation_id}.`;
-    }
+    let installationId = installation.sub;
+    let status = `Request for installation ID ${installationId} received.`;
 
     res.status(200).send(status);
+
 });
 
 
@@ -46,14 +39,17 @@ app.post('/send_data/:installation_id', async (req, res) => {
     //  Fetch private key from the environment.
     //  In production, this should be stored more securely.
     //
-    var private_key = process.env.PRIVATE_KEY;
+    const private_key = process.env.PRIVATE_KEY.replace(/\\n/g, '\n');
 
     //
     //  Create token for fetching an access token
     //
+    let integrationKeyId = process.env.INTEGRATION_KEY_ID;
+    let integrationId = process.env.INTEGRATION_ID;
+
     let integrationToken = jwt.sign({ 
-      kid: process.env.INTEGRATION_KEY_ID, // The key used to sign this request. 
-      sub: process.env.INTEGRATION_ID, // The integration's id
+      kid: integrationKeyId, // The key used to sign this request. 
+      sub: integrationId, // The integration's id
       exp: Date.now() + 60,
       iat: Date.now(),
     } , private_key, { algorithm: 'RS256'});
@@ -63,9 +59,9 @@ app.post('/send_data/:installation_id', async (req, res) => {
     //
     //  Get access token to get use with the Vault API
     //
-    let access_token = await rp({
+    let accessToken = await rp({
       method: 'POST',
-      uri: vaultHost + '/installations/' + req.query.installation_id + '/access_tokens',
+      uri: vaultHost + '/installations/' + req.params.installation_id + '/access_tokens',
       headers: {
         'Authorization': 'Bearer ' + integrationToken
       },
